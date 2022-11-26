@@ -5,17 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import com.jds_code.theeverythingbagel.databinding.FragmentNewNoteBinding
+import com.jds_code.theeverythingbagel.databinding.FragmentMenuBinding
 
-class NewNoteFragment : Fragment() {
-
-    // This is an object instance of TEBViewModel that this UI controller (i.e.,
-    //  NewNoteFragment.kt) will use. (Also, the 'by' keyword is simply states
-    //  that the getters/setters are in 'viewModels()'.
-    private val viewModel: TEBViewModel by viewModels()
-
-    private var _binding: FragmentNewNoteBinding? = null
+class MenuFragment : Fragment() {
+    private var _binding: FragmentMenuBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +24,7 @@ class NewNoteFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentNewNoteBinding.inflate(inflater, container, false)
+        _binding = FragmentMenuBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }
