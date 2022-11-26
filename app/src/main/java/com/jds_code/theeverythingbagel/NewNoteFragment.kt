@@ -1,10 +1,12 @@
 package com.jds_code.theeverythingbagel
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.jds_code.theeverythingbagel.databinding.FragmentNewNoteBinding
 
@@ -13,7 +15,7 @@ class NewNoteFragment : Fragment() {
     // This is an object instance of TEBViewModel that this UI controller (i.e.,
     //  NewNoteFragment.kt) will use. (Also, the 'by' keyword is simply states
     //  that the getters/setters are in 'viewModels()'.
-    private val viewModel: TEBViewModel by viewModels()
+    private val sharedViewModel: TEBViewModel by activityViewModels()
 
     private var _binding: FragmentNewNoteBinding? = null
     private val binding get() = _binding!!
@@ -32,8 +34,16 @@ class NewNoteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentNewNoteBinding.inflate(inflater, container, false)
+
+        Log.d("NewNoteFragment", "NewNoteFragment has been created/re-created.")
+
         val view = binding.root
         return view
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        Log.d("NewNoteFragment", "NewNoteFragment has been destroyed.")
     }
 
     override fun onDestroyView() {

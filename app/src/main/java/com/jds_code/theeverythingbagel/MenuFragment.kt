@@ -1,13 +1,20 @@
 package com.jds_code.theeverythingbagel
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.jds_code.theeverythingbagel.databinding.FragmentMenuBinding
 
 class MenuFragment : Fragment() {
+
+    // See comment for same in NewNoteFragment.kt
+    private val sharedViewModel: TEBViewModel by activityViewModels()
+
     private var _binding: FragmentMenuBinding? = null
     private val binding get() = _binding!!
 
@@ -25,8 +32,16 @@ class MenuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentMenuBinding.inflate(inflater, container, false)
+
+        Log.d("MenuFragment", "MenuFragment has been created/re-created.")
+
         val view = binding.root
         return view
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        Log.d("MenuFragment", "MenuFragment has been destroyed.")
     }
 
     override fun onDestroyView() {
