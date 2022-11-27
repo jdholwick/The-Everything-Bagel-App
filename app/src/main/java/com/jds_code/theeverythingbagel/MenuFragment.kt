@@ -26,6 +26,13 @@ class MenuFragment : Fragment() {
         //setHasOptionsMenu(true)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        // This little gem is the reason my button to the next fragment was being such a
+        //  massive pain... New Note Button now goes to New Note Screen!
+        binding?.menuFragment = this
+    }
+
     // This function is essentially used to "inflate" the fragment view, setting the value
     //  of '_binding', and then returning the root view.
     override fun onCreateView(
