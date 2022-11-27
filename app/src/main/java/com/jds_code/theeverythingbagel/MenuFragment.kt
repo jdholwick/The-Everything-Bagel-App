@@ -7,8 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import com.jds_code.theeverythingbagel.databinding.FragmentMenuBinding
+import androidx.navigation.fragment.findNavController
+import com.jds_code.theeverythingbagel.TEBViewModel
 
 class MenuFragment : Fragment() {
 
@@ -22,7 +23,7 @@ class MenuFragment : Fragment() {
         // I'm not sure if we need the following but it will be to display the options
         //  menu if that is part of this.
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
+        //setHasOptionsMenu(true)
     }
 
     // This function is essentially used to "inflate" the fragment view, setting the value
@@ -37,6 +38,11 @@ class MenuFragment : Fragment() {
 
         val view = binding.root
         return view
+    }
+
+    // Used in 'fragment_menu.xml' when button to make new note is clicked
+    fun goToNextScreen() {
+        findNavController().navigate(R.id.action_menuFragment_to_newNoteFragment)
     }
 
     override fun onDetach() {
