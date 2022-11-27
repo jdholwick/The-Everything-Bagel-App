@@ -58,7 +58,7 @@ class NewNoteFragment : Fragment() {
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = sharedViewModel
-            //newNoteFragment = this@NewNoteFragment
+            newNoteFragment = this@NewNoteFragment
         }
     }
 }

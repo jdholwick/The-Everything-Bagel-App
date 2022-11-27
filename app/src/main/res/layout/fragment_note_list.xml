@@ -6,6 +6,10 @@
         <variable
             name="viewModel"
             type="com.jds_code.theeverythingbagel.TEBViewModel" />
+
+        <variable
+            name="noteListFragment"
+            type="com.jds_code.theeverythingbagel.NoteListFragment" />
     </data>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
