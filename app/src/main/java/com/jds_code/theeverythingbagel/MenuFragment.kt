@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.jds_code.theeverythingbagel.databinding.FragmentMenuBinding
 import androidx.navigation.fragment.findNavController
-import com.jds_code.theeverythingbagel.TEBViewModel
 
 class MenuFragment : Fragment() {
 
@@ -20,9 +19,10 @@ class MenuFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
         // I'm not sure if we need the following but it will be to display the options
         //  menu if that is part of this.
-        super.onCreate(savedInstanceState)
         //setHasOptionsMenu(true)
     }
 
@@ -48,8 +48,13 @@ class MenuFragment : Fragment() {
     }
 
     // Used in 'fragment_menu.xml' when button to make new note is clicked
-    fun goToNextScreen() {
+    fun goToNewNoteScreen() {
         findNavController().navigate(R.id.action_menuFragment_to_newNoteFragment)
+    }
+
+    // Used in 'fragment_menu.xml' when button to see list of notes is clicked
+    fun goToNoteListScreen() {
+        findNavController().navigate(R.id.action_menuFragment_to_noteListFragment)
     }
 
     override fun onDetach() {

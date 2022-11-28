@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import com.jds_code.theeverythingbagel.databinding.FragmentNewNoteBinding
 
 class NewNoteFragment : Fragment() {
@@ -41,6 +40,16 @@ class NewNoteFragment : Fragment() {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding?.apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = sharedViewModel
+            newNoteFragment = this@NewNoteFragment
+        }
+    }
+
     override fun onDetach() {
         super.onDetach()
         Log.d("NewNoteFragment", "NewNoteFragment has been destroyed.")
@@ -50,15 +59,5 @@ class NewNoteFragment : Fragment() {
         super.onDestroyView()
         // '_binding' is set to 'null' because the view no longer exists.
         _binding = null
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding?.apply {
-            lifecycleOwner = viewLifecycleOwner
-            viewModel = sharedViewModel
-            newNoteFragment = this@NewNoteFragment
-        }
     }
 }

@@ -19,10 +19,11 @@ class NoteListFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
         // I'm not sure if we need the following but it will be to display the options
         //  menu if that is part of this.
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
+        //setHasOptionsMenu(true)
     }
 
     // This function is essentially used to "inflate" the fragment view, setting the value
@@ -37,6 +38,16 @@ class NoteListFragment : Fragment() {
 
         val view = binding.root
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding?.apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = sharedViewModel
+            noteListFragment = this@NoteListFragment
+        }
     }
 
     override fun onDetach() {
