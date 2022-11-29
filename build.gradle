@@ -8,6 +8,9 @@ buildscript {
         kotlin_version = "1.7.10"
         material_version = "1.7.0-alpha2"
         nav_version = "2.5.2"
+
+        // Required for Room
+        room_version = '2.4.3'
     }
 }
 

@@ -41,16 +41,6 @@ android {
 }
 
 dependencies {
-    // May be some issues setting up to use the Room DB
-    def room_version = '2.4.3'
-
-    implementation "androidx.room:room-runtime:$room_version"
-
-    kapt "androidx.room:room-compiler:$room_version"
-
-    // optional - Kotlin Extensions and Coroutines support for Room
-    implementation "androidx.room:room-ktx:$room_version"
-
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
@@ -65,4 +55,12 @@ dependencies {
     // For fragment navigation I believe
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // For Room
+    //def room_version = '2.4.3'
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$room_version"
 }
