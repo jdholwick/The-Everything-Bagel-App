@@ -1,5 +1,10 @@
-import android.content.ClipData
-import androidx.room.*
+package com.jds_code.theeverythingbagel.database.notes
+
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -11,9 +16,9 @@ interface NotesDao {
     @Update
     suspend fun update(notes: Notes)
 
-    @Query("SELECT * from note WHERE id = :id")
+    @Query("SELECT * from notes WHERE id = :id")
     fun getItem(id: Int): Flow<Notes>
 
-    @Query("SELECT * from note ORDER BY note_title ASC")
+    @Query("SELECT * from notes ORDER BY note_title ASC")
     fun getItems(): Flow<List<Notes>>
 }
