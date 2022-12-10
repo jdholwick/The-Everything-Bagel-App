@@ -1,11 +1,10 @@
-import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "note")
 data class Notes(
-    @PrimaryKey val id: Int,
-    @NonNull @ColumnInfo(name = "note_title") val noteTitle: String,
-    @NonNull @ColumnInfo(name = "note_body") val noteBody: String
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    @ColumnInfo(name = "note_title") val noteTitle: String,
+    @ColumnInfo(name = "note_body") val noteBody: String
 )

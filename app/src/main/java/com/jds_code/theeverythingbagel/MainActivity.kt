@@ -9,7 +9,6 @@ import com.jds_code.theeverythingbagel.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(/*R.layout.activity_main*/) {
 
-    // Experiment for button controls
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,10 +17,12 @@ class MainActivity : AppCompatActivity(/*R.layout.activity_main*/) {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Experiment for button controls
+        // Retrieves the NavController from the NavHostFragment
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
+
+        // Set up the action bar for use with the NavController
         setupActionBarWithNavController(navController)
     }
 
@@ -29,10 +30,4 @@ class MainActivity : AppCompatActivity(/*R.layout.activity_main*/) {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
-
-    // This was the originally generated 'onCreate().'
-/*    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }*/
 }

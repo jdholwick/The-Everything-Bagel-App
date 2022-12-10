@@ -2,38 +2,33 @@ package com.jds_code.theeverythingbagel
 
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.jds_code.theeverythingbagel.databinding.FragmentNoteListBinding
+import com.jds_code.theeverythingbagel.databinding.FragmentNoteDetailsBinding
 
-class NoteListFragment : Fragment() {
+class NoteDetailsFragment : Fragment() {
 
     // See comment for same in NewNoteFragment.kt
     private val sharedViewModel: TEBViewModel by activityViewModels()
 
-    private var _binding: FragmentNoteListBinding? = null
+    private var _binding: FragmentNoteDetailsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // I'm not sure if we need the following but it will be to display the options
-        //  menu if that is part of this.
-        //setHasOptionsMenu(true)
     }
 
-    // This function is essentially used to "inflate" the fragment view, setting the value
-    //  of '_binding', and then returning the root view.
+    // See comment in 'NoteListFragment'
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentNoteListBinding.inflate(inflater, container, false)
+        _binding = FragmentNoteDetailsBinding.inflate(inflater, container, false)
 
-        Log.d("NoteListFragment", "NoteListFragment has been created/re-created.")
+        Log.d("NoteDetailsFragment", "NoteDetailsFragment has been created/re-created.")
 
         val view = binding.root
         return view
@@ -45,23 +40,18 @@ class NoteListFragment : Fragment() {
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = sharedViewModel
-            noteListFragment = this@NoteListFragment
+            noteDetailsFragment = this@NoteDetailsFragment
         }
     }
 
     override fun onDetach() {
         super.onDetach()
-        Log.d("NoteListFragment", "NoteListFragment has been destroyed.")
+        Log.d("NoteDetailsFragment", "NoteDetailsFragment has been destroyed.")
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         // '_binding' is set to 'null' because the view no longer exists.
         _binding = null
-    }
-
-    private fun chooseLayout() {
-        // Probably we won't need this as the layout isn't going to change in
-        //  its basic elements, I don't think.
     }
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.jds_code.theeverythingbagel.TEBViewModel" />
+
+        <variable
+            name="noteDetailsFragment"
+            type="com.jds_code.theeverythingbagel.NoteDetailsFragment" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvNoteBody"
+            android:layout_width="324dp"
+            android:layout_height="264dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/note_body"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNoteTitle" />
+
+        <TextView
+            android:id="@+id/tvNoteTitle"
+            android:layout_width="163dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/note_title2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnSaveEdits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="92dp"
+            android:text="@string/save_edits"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNoteBody" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
