@@ -2,6 +2,10 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 
+    id 'kotlin-android'
+    // the following was not liked by A.S.
+    //id 'androidx.navigation.safeargs.kotlin'
+
     // Required for Room
     id 'kotlin-kapt'
 }
@@ -12,7 +16,7 @@ android {
 
     defaultConfig {
         applicationId "com.jds_code.theeverythingbagel"
-        minSdk 21
+        minSdk 19
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -51,13 +55,13 @@ dependencies {
 
     // Required for ViewModel use
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
 
     // For fragment navigation I believe
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     // For Room
-    //def room_version = '2.4.3'
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 

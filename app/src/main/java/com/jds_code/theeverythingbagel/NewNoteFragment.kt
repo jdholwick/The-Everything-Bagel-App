@@ -5,19 +5,51 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.jds_code.theeverythingbagel.database.notes.Notes
 import com.jds_code.theeverythingbagel.databinding.FragmentNewNoteBinding
+import android.content.Context.INPUT_METHOD_SERVICE
+import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
+import androidx.navigation.fragment.navArgs
 
 class NewNoteFragment : Fragment() {
 
     // This is an object instance of TEBViewModel that this UI controller (i.e.,
     //  NewNoteFragment.kt) will use. (Also, the 'by' keyword is simply states
     //  that the getters/setters are in 'viewModels()'.
-    private val sharedViewModel: TEBViewModel by activityViewModels()
+    //private val sharedViewModel: TEBViewModel by activityViewModels()
+    // The commented out code DIRECTLY ABOVE is replaced by the following for now.
+    //  The sharedViewModel used above was the problem presumably.
+    private val viewModel: TEBViewModel by activityViewModels {
+        NotesViewModelFactory(
+            (activity?.application as NotesApplication).database.notesDao()
+        )
+    }
+    lateinit var note: Notes
 
     private var _binding: FragmentNewNoteBinding? = null
     private val binding get() = _binding!!
+
+    private fun isEntryValid(): Boolean {
+        return viewModel.isEntryValid(
+            binding.etNoteTitle.text.toString(),
+            binding.etNoteBody.text.toString()
+        )
+    }
+
+    private fun addNewNote() {
+        if (isEntryValid()) {
+            viewModel.addNewNote(
+                binding.etNoteTitle.text.toString(),
+                binding.etNoteBody.text.toString()
+            )
+        }
+        /*val action = AddItemFragmentDirections.actionAddItemFragmentToItemListFragment()
+        findNavController().navigate(action)*/
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // I'm not sure if we need the following but it will be to display the options
@@ -45,7 +77,9 @@ class NewNoteFragment : Fragment() {
 
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
-            viewModel = sharedViewModel
+            //viewModel = sharedViewModel
+            // Following replaces DIRECTLY ABOVE for the moment
+            viewModel = viewModel
             newNoteFragment = this@NewNoteFragment
         }
     }

@@ -7,12 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.jds_code.theeverythingbagel.database.notes.Notes
 import com.jds_code.theeverythingbagel.databinding.FragmentNoteListBinding
 
 class NoteListFragment : Fragment() {
 
     // See comment for same in NewNoteFragment.kt
-    private val sharedViewModel: TEBViewModel by activityViewModels()
+    private val viewModel: TEBViewModel by activityViewModels{
+        NotesViewModelFactory(
+            (activity?.application as NotesApplication).database.notesDao()
+        )
+    }
+    lateinit var note: Notes
 
     private var _binding: FragmentNoteListBinding? = null
     private val binding get() = _binding!!
@@ -44,7 +50,8 @@ class NoteListFragment : Fragment() {
 
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
-            viewModel = sharedViewModel
+            // See note in NewNoteFragment.kt
+            viewModel = viewModel
             noteListFragment = this@NoteListFragment
         }
     }

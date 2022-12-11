@@ -9,11 +9,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.jds_code.theeverythingbagel.databinding.FragmentMenuBinding
 import androidx.navigation.fragment.findNavController
+import com.jds_code.theeverythingbagel.database.notes.Notes
 
 class MenuFragment : Fragment() {
 
     // See comment for same in NewNoteFragment.kt
-    private val sharedViewModel: TEBViewModel by activityViewModels()
+    private val viewModel: TEBViewModel by activityViewModels{
+        NotesViewModelFactory(
+            (activity?.application as NotesApplication).database.notesDao()
+        )
+    }
+    lateinit var note: Notes
 
     private var _binding: FragmentMenuBinding? = null
     private val binding get() = _binding!!
