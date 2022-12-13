@@ -20,8 +20,21 @@ class TEBViewModel(private val notesDao: NotesDao) : ViewModel() {
     private var _noteBody = MutableLiveData<String>("")
     val noteBody: LiveData<String> = _noteBody*/
 
-    init {
+/*    init {
         Log.d("TEBViewModel", "TEBViewModel has been created.")
+    }*/
+
+    /**
+     * Will be used to show items from Room DB in Notes List Fragment
+     */
+    val allNotes: LiveData<List<Notes>> = notesDao.getItems().asLiveData()
+
+    /**
+     * Adds new note to the database
+     */
+    fun addNewNote(noteTitle: String, noteBody: String) {
+        val newNote = getNewNoteEntry(noteTitle, noteBody)
+        insertNote(newNote)
     }
 
     private fun insertNote(notes: Notes) {
@@ -30,8 +43,20 @@ class TEBViewModel(private val notesDao: NotesDao) : ViewModel() {
         }
     }
 
-    // This returns an instance of the [Notes] entity class with the note info entered.
-    //  This will be used to add a new note to the Notes database.
+    /**
+     * Checks that the entries by the user are not blank.
+     */
+    fun isEntryValid(noteTitle: String, noteBody: String): Boolean {
+        if (noteTitle.isBlank() || noteBody.isBlank()) {
+            return false
+        }
+        return true
+    }
+
+    /**
+     * This returns an instance of the [Notes] entity class with the note info entered.
+     * This will be used to add a new note to the Notes database.
+     */
     private fun getNewNoteEntry(noteTitle: String, noteBody: String): Notes {
         return Notes(
             noteTitle = noteTitle,
@@ -39,19 +64,6 @@ class TEBViewModel(private val notesDao: NotesDao) : ViewModel() {
         )
     }
 
-    // Adds new note to the database
-    fun addNewNote(noteTitle: String, noteBody: String) {
-        val newNote = getNewNoteEntry(noteTitle, noteBody)
-        insertNote(newNote)
-    }
-
-    // Checks that the entries by the user are not blank.
-    fun isEntryValid(noteTitle: String, noteBody: String): Boolean {
-        if (noteTitle.isBlank() || noteBody.isBlank()) {
-            return false
-        }
-        return true
-    }
 
     // I'm not 100% certain, but I think this is the best way to save the note
     //  title and body the user inputs.
@@ -63,10 +75,11 @@ class TEBViewModel(private val notesDao: NotesDao) : ViewModel() {
         _noteBody.value = newNoteBody
     }*/
 
-    override fun onCleared() {
+    // I don't know that we need this.
+    /*override fun onCleared() {
         super.onCleared()
         Log.d("TEBViewModel", "TEBViewModel has been destroyed.")
-    }
+    }*/
 }
 
 

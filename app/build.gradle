@@ -3,21 +3,23 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 
     id 'kotlin-android'
-    // the following was not liked by A.S.
-    //id 'androidx.navigation.safeargs.kotlin'
 
     // Required for Room
     id 'kotlin-kapt'
+
+    // The following was not liked by Android Studio
+    //  for no clear GD reason
+    //id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
     namespace 'com.jds_code.theeverythingbagel'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.jds_code.theeverythingbagel"
         minSdk 19
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -45,7 +47,7 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -54,8 +56,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
     // Required for ViewModel use
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
     // For fragment navigation I believe
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"

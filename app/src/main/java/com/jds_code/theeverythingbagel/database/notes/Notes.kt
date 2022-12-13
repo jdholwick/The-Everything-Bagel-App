@@ -3,7 +3,6 @@ package com.jds_code.theeverythingbagel.database.notes
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.text.NumberFormat
 
 @Entity
 data class Notes(
