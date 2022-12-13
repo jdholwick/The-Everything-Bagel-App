@@ -7,7 +7,10 @@ import java.text.NumberFormat
 
 @Entity
 data class Notes(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    @ColumnInfo(name = "note_title") val noteTitle: String,
-    @ColumnInfo(name = "note_body") val noteBody: String,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
+    @ColumnInfo(name = "title")
+    val noteTitle: String,
+    @ColumnInfo(name = "body")
+    val noteBody: String,
 )

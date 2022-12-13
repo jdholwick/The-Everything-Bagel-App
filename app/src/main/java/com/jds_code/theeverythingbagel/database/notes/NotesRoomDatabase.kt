@@ -14,7 +14,7 @@ abstract class NotesRoomDatabase : RoomDatabase() {
     abstract fun notesDao(): NotesDao
 
     companion object {
-        // The value of a volatile variable is never chached, and all writes
+        // The value of a volatile variable is never cached, and all writes
         //  and reads are done main memory.
         @Volatile
         private var INSTANCE: NotesRoomDatabase? = null
@@ -29,11 +29,10 @@ abstract class NotesRoomDatabase : RoomDatabase() {
                     "notes_database"
                 )
                     // Wipes and rebuilds instead of migrating if no Migration object.
-                    // Migration is not part of this codelab.
                     .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
-                // return instance
+                //return instance
                 instance
             }
         }

@@ -5,15 +5,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.jds_code.theeverythingbagel.database.notes.Notes
 import com.jds_code.theeverythingbagel.databinding.FragmentNewNoteBinding
-import android.content.Context.INPUT_METHOD_SERVICE
+
+/*import android.content.Context.INPUT_METHOD_SERVICE
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
-import androidx.navigation.fragment.navArgs
+import androidx.navigation.fragment.navArgs*/
 
 class NewNoteFragment : Fragment() {
 
@@ -36,7 +37,7 @@ class NewNoteFragment : Fragment() {
     private fun isEntryValid(): Boolean {
         return viewModel.isEntryValid(
             binding.etNoteTitle.text.toString(),
-            binding.etNoteBody.text.toString()
+            binding.etNoteBody.text.toString(),
         )
     }
 
@@ -44,11 +45,12 @@ class NewNoteFragment : Fragment() {
         if (isEntryValid()) {
             viewModel.addNewNote(
                 binding.etNoteTitle.text.toString(),
-                binding.etNoteBody.text.toString()
+                binding.etNoteBody.text.toString(),
             )
         }
-        /*val action = AddItemFragmentDirections.actionAddItemFragmentToItemListFragment()
-        findNavController().navigate(action)*/
+
+        // The following is all that is required to go to another fragment.
+        findNavController().navigate(R.id.action_newNoteFragment_to_menuFragment)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,8 +70,7 @@ class NewNoteFragment : Fragment() {
 
         Log.d("NewNoteFragment", "NewNoteFragment has been created/re-created.")
 
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -81,6 +82,10 @@ class NewNoteFragment : Fragment() {
             // Following replaces DIRECTLY ABOVE for the moment
             viewModel = viewModel
             newNoteFragment = this@NewNoteFragment
+        }
+
+        binding.btnSaveNote.setOnClickListener {
+            addNewNote()
         }
     }
 

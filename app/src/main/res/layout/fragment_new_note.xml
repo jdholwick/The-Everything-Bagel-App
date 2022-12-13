@@ -19,7 +19,7 @@
         android:layout_height="match_parent"
         android:padding="16dp">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etNoteTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etNoteBody"
             android:layout_width="286dp"
             android:layout_height="395dp"
