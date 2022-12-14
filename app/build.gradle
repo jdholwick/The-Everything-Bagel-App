@@ -7,8 +7,8 @@ plugins {
     // Required for Room
     id 'kotlin-kapt'
 
-    // The following was not liked by Android Studio
-    //  for no clear GD reason
+    // The following was not liked by Android Studio for no clear reason.
+    //  Other similar code does fine with it.
     //id 'androidx.navigation.safeargs.kotlin'
 }
 

@@ -10,4 +10,5 @@
     <string name="note_title2">Note Title</string>
     <string name="see_notes_list">See Notes List</string>
     <string name="make_new_note">Make New Note</string>
+    <string name="save_note">Save Note</string>
 </resources>
